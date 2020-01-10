@@ -6,22 +6,22 @@ class Fib extends Component {
         seenIndexes: [],
         values: {},
         index: ''
-    }
+    };
 
-    componentMidMount() {
+    componentDidMount() {
         this.fetchValues();
         this.fetchIndexes();
-    }
+    };
 
     async fetchValues() {
         const values = await axios.get('/api/values/current');
         this.setState({ values: values.data});
-    }
+    };
 
     async fetchIndexes() {
         const seenIndexes = await axios.get('/api/values/all');
         this.setState({ seenIndexes: seenIndexes.data});
-    }
+    };
 
     handleSubmit = async (event) => {
         event.preventDefault();
@@ -30,13 +30,13 @@ class Fib extends Component {
             index: this.state.index
         });
         this.setState({index: ''});
-    }
+    };
 
-    async renderSeenIndexes() {
-        return this.state.seenIndexes.map(({item}) => number).join(', ');
-    }
+    renderSeenIndexes() {
+        return this.state.seenIndexes.map(({item}) => item).join(', ');
+    };
 
-    async renderValues() {
+    renderValues() {
         const entries = [];
 
         for (let key in this.state.values) {
@@ -48,12 +48,12 @@ class Fib extends Component {
         }
 
         return 
-    }
+    };
 
     render() {
         return (
             <div>
-                <form onSubmin={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <label></label>
                     <input 
                         value={this.state.index}
@@ -69,7 +69,7 @@ class Fib extends Component {
                 {this.renderValues()}
             </div>
         );
-    }
+    };
 }
 
 export default Fib;
