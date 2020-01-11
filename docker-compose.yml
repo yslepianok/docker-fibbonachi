@@ -10,7 +10,7 @@ services:
       context: ./backend
     volumes:
       - /app/node_modules
-      - ./server:/app
+      - '.\backend:/app'
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
