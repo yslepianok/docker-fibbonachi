@@ -1,10 +1,9 @@
-language: generic
 sudo: required
 services:
     - docker
 
 before_install:
-    - docker build -t slepianok/react-test -f ./client/Dockerfile.dev . ./client
+    - docker build -t slepianok/react-test -f ./client/Dockerfile.dev ./client
 
 script:
     - docker run -e CI=true slepianok/react-test npm test
