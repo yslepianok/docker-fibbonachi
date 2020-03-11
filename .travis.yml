@@ -1,1 +1,23 @@
 language: generic
+sudl: required
+services:
+    - docker
+
+before_install:
+    - docker build -t slepianok/react-test -f ./client/Dockerfile.dev . ./client
+
+script:
+    - docker run -e CI=true slepianok/react-test npm test -- --coverage
+
+after_success:
+    - docker build -t slepianok/docker-fibbonachi_client ./client
+    - docker build -t slepianok/docker-fibbonachi_nginx ./nginx
+    - docker build -t slepianok/docker-fibbonachi_backend ./backend
+    - docker build -t slepianok/docker-fibbonachi_worker ./worker
+    # LOG IN TO DOCKERHUB
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    # PUSH ALL IMAGES TO DOCKERHUB
+    - docker push slepianok/docker-fibbonachi_client
+    - docker push slepianok/docker-fibbonachi_nginx
+    - docker push slepianok/docker-fibbonachi_backend
+    - docker push slepianok/docker-fibbonachi_worker
