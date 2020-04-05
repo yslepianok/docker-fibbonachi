@@ -5,24 +5,28 @@
             "name": "client",
             "image": "slepianok/docker-fibbonachi_client",
             "hostname": "client",
+            "memory": 128,
             "essential": false
         },
         {
             "name": "backend",
             "image": "slepianok/docker-fibbonachi_backend",
             "hostname": "api",
+            "memory": 128,
             "essential": false
         },
         {
             "name": "worker",
             "image": "slepianok/docker-fibbonachi_worker",
             "hostname": "worker",
+            "memory": 128,
             "essential": false
         },
         {
             "name": "nginx",
             "image": "slepianok/docker-fibbonachi_nginx",
             "hostname": "nginx",
+            "memory": 128,
             "essential": true,
             "portMappings": [
                 {
