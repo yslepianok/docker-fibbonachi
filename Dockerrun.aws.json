@@ -1,0 +1,10 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions":[
+        {
+            "name": "client",
+            "image": "slepianok/docker-fibbonachi_client",
+            "hostname": "client"
+        }
+    ]
+}
