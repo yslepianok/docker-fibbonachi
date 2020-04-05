@@ -21,7 +21,7 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-      - PG_HOST=postgres
+      - PG_HOST=multidocker-db.cps2hpn7zclt.eu-west-1.rds.amazonaws.com
       - PG_PORT=5432
       - PG_USER=postgres
       - PG_PASSWORD=postgres_password

@@ -4,7 +4,33 @@
         {
             "name": "client",
             "image": "slepianok/docker-fibbonachi_client",
-            "hostname": "client"
+            "hostname": "client",
+            "essential": false
+        },
+        {
+            "name": "backend",
+            "image": "slepianok/docker-fibbonachi_backend",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "slepianok/docker-fibbonachi_worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "slepianok/docker-fibbonachi_nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80, 
+                    "containerPort": 80
+                }
+            ],
+            "links": ["client", "server"]
         }
     ]
 }
